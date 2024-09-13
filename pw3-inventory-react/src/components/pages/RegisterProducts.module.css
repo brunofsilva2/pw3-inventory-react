@@ -1,0 +1,7 @@
+.register_products_container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4em;
+}

@@ -1,0 +1,25 @@
+/* Button.module.css */
+
+.button {
+    margin-top: 20px;
+}
+
+.button button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button button:hover {
+    background-color: #0056b3;
+}
+
+.button button:focus {
+    outline: none;
+}
