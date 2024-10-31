@@ -1,4 +1,3 @@
-import React from "react";
 import style from './CardProducts.module.css';
 import Select from "../forms/Select";
 import Input from "../forms/Input";

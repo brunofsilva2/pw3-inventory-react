@@ -1,4 +1,3 @@
-import React from 'react';
 import style from './CreateBooks.module.css'
 
 const RegisterProductsName = () => {
