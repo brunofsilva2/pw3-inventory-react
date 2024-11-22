@@ -20,7 +20,6 @@ const router = createBrowserRouter([
         path: "register",
         element: (
             <>
-            
                 <NavBar/>
                 <RegisterProducts/>
             
@@ -31,7 +30,6 @@ const router = createBrowserRouter([
         path: "list",
         element: (
             <>
-            
                 <NavBar/>
                 <ListProducts/>
             

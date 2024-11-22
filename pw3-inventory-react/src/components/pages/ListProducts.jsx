@@ -1,34 +1,65 @@
-import {useState, useEffect} from 'react'
+import { useState, useEffect } from 'react';
 import { useToast } from '@chakra-ui/react';
 import style from './ListProducts.module.css';
 import api from '../../api';
 
-import * as Chakra from '@chakra-ui/react';
-console.log(Chakra);
-
-
 const ListProducts = () => {
 
     const [products, setProducts] = useState([]);
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(true);
     const toast = useToast();
+
+    const deleteProduct = async (id) => {
+        try {
+            const response = await api.delete(`/products/${id}`);
+            
+            if (response.data.success) {
+                // Produto deletado com sucesso, atualiza a lista
+                setProducts(products.filter(product => product.id !== id)); 
+                toast({
+                    title: "Produto deletado",
+                    description: response.data.message,
+                    status: "success",
+                    duration: 3000,
+                    isClosable: true,
+                });
+            } else {
+                toast({
+                    title: "Erro",
+                    description: response.data.message,
+                    status: "error",
+                    duration: 3000,
+                    isClosable: true,
+                });
+            }
+        } catch (error) {
+            console.error(error);
+            toast({
+                title: "Erro ao deletar produto",
+                description: error.message,
+                status: "error",
+                duration: 3000,
+                isClosable: true,
+            });
+        }
+    };
 
     useEffect(() => {
 
         let mounted = true;
-
         setLoading(true);
-    
+
         api.get('/products')
             .then(response => {
-                if(mounted) {
+                if (mounted) {
+                    console.log(response.data); // Verifique os dados da resposta
                     setProducts(response.data);
                     setLoading(false);
                 }
             })
             .catch(error => {
                 console.error(error);
-                if(mounted) {
+                if (mounted) {
                     toast({
                         title: "Erro ao encontrar produtos",
                         description: error.message,
@@ -39,16 +70,16 @@ const ListProducts = () => {
                     setLoading(false);
                 }
             });
-    
+
         return () => {
             mounted = false;
         };
     }, [toast]);
-    
+
     return (
         <section className={style.list_book_container}>
             <h1>LIST PRODUCTS</h1>
-            
+
             {loading ? (
                 <p>Loading...</p>
             ) : (
@@ -56,7 +87,10 @@ const ListProducts = () => {
                     {products.length > 0 ? (
                         <ul>
                             {products.map((product) => (
-                                <li key={product.id}>{product.name}</li>
+                                <li key={product.id}>
+                                    {product.product_name}
+                                    <button onClick={() => deleteProduct(product.id)}>Deletar</button>
+                                </li>
                             ))}
                         </ul>
                     ) : (
@@ -65,7 +99,7 @@ const ListProducts = () => {
                 </>
             )}
         </section>
-    );    
-}
+    );
+};
 
 export default ListProducts;
