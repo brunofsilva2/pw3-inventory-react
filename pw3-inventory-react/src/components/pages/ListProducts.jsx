@@ -57,12 +57,16 @@ const ListProducts = () => {
                     setLoading(false);
                 }
             })
+
             .catch(error => {
                 console.error(error);
+
+                const errorMessage = error.response?.data?.message || "Erro ao encontrar produtos.";
+
                 if (mounted) {
                     toast({
                         title: "Erro ao encontrar produtos",
-                        description: error.message,
+                        description: errorMessage,
                         status: "error",
                         duration: 3000,
                         isClosable: true,

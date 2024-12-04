@@ -1,23 +1,33 @@
-import styles from './Select.module.css'
+import PropTypes from 'prop-types';
+import styles from './Select.module.css';
 
-function Select({type, text, name}){
-
-    return(
-
+function Select({ text, name, value, onChange, options }) {
+    return (
         <div className={styles.form_control}>
-
-        <label htmlFor={name}> {text}</label>
-            <select name={name} id={name}>
-
-                <option>Selecione uma categoria</option>
-                <option>Medicamentos</option>
-                <option>Medicamentos controlados</option>
-                <option>Perfumaria</option>
-                <option>Alimentos</option>
-
+            <label htmlFor={name}>{text}</label>
+            <select name={name} id={name} value={value} onChange={onChange}>
+                <option value="">Selecione uma categoria</option>
+                {options && options.map((option) => (
+                    <option key={String(option.value)} value={String(option.value)}>
+                        {option.label}
+                    </option>
+                ))}
             </select>
         </div>
-    )
+    );
 }
 
-export default Select
+Select.propTypes = {
+    text: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
+    options: PropTypes.arrayOf(
+        PropTypes.shape({
+            value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+            label: PropTypes.string.isRequired
+        })
+    ).isRequired
+};
+
+export default Select;
