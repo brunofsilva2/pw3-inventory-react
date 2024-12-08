@@ -68,14 +68,14 @@ const RegisterProducts = () => {
                 description: description,
                 quantity: parseInt(quantity, 10),
                 min_stock: parseInt(min_stock, 10),
-                price: parseFloat(price),  // Agora o preço é corretamente um número decimal
+                price: parseFloat(price),
                 categoria_id: categoria,
             };
             
             console.log(data);
 
             const response = await api.post('/products', data);
-            console.log(response);  // Adicione um log aqui para verificar a resposta
+            console.log(response);
 
             if (response.status === 201) {
                 toast({
