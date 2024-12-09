@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import { useToast, Box, Flex, Image, Text, Button, Spinner, Heading, Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, Input} from '@chakra-ui/react';
+import { useToast, Box, Flex, Image, Text, Button, Spinner, Heading, Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, Input } from '@chakra-ui/react';
 import api from '../../api';
+import styles from './ListProducts.module.css'; // Certifique-se de importar o arquivo CSS
 
 const ListProducts = () => {
     const [products, setProducts] = useState([]);
@@ -62,7 +63,6 @@ const ListProducts = () => {
         });
         setIsModalOpen(true);
     };
-    
 
     const handleUpdate = async () => {
         try {
@@ -107,8 +107,6 @@ const ListProducts = () => {
         setFormData({ ...formData, [name]: value });
     };
 
-    
-
     useEffect(() => {
         let mounted = true;
         setLoading(true);
@@ -141,13 +139,13 @@ const ListProducts = () => {
     }, [toast]);
 
     return (
-        <Box p={5}>
-            <Heading size="lg" mb={5}>
+        <Box p={5} className={styles['box-container']}> {/* Aplica a classe do CSS */}
+            <Heading size="lg" mb={5} className={styles.heading}>
                 List Products
             </Heading>
 
             {loading ? (
-                <Flex justify="center" align="center" height="200px">
+                <Flex justify="center" align="center" height="200px" className={styles['spinner-container']}>
                     <Spinner size="xl" />
                 </Flex>
             ) : (
@@ -157,13 +155,7 @@ const ListProducts = () => {
                             {products.map((product) => (
                                 <Box
                                     key={product.id}
-                                    borderWidth="1px"
-                                    borderRadius="lg"
-                                    overflow="hidden"
-                                    boxShadow="md"
-                                    p={4}
-                                    maxW="250px"
-                                    textAlign="center"
+                                    className={styles['product-card']} // Remova o comentário inline
                                 >
                                     <Image 
                                         src="/tarjavermelha.jpg" 
@@ -205,8 +197,8 @@ const ListProducts = () => {
 
             <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
                 <ModalOverlay />
-                <ModalContent>
-                    <ModalHeader>Atualizar Produto</ModalHeader>
+                <ModalContent className={styles['modal-content']}>
+                    <ModalHeader className={styles['modal-header']}>Atualizar Produto</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>
                         <Input
@@ -214,6 +206,7 @@ const ListProducts = () => {
                             placeholder="Nome"
                             value={formData.name}
                             onChange={handleInputChange}
+                            className={styles['modal-input']}
                             mb={3}
                         />
                         <Input
@@ -221,6 +214,7 @@ const ListProducts = () => {
                             placeholder="Descrição"
                             value={formData.description}
                             onChange={handleInputChange}
+                            className={styles['modal-input']}
                             mb={3}
                         />
                         <Input
@@ -229,6 +223,7 @@ const ListProducts = () => {
                             type="number"
                             value={formData.quantity}
                             onChange={handleInputChange}
+                            className={styles['modal-input']}
                             mb={3}
                         />
                         <Input
@@ -237,6 +232,7 @@ const ListProducts = () => {
                             type="number"
                             value={formData.min_stock}
                             onChange={handleInputChange}
+                            className={styles['modal-input']}
                             mb={3}
                         />
                         <Input
@@ -245,6 +241,7 @@ const ListProducts = () => {
                             type="number"
                             value={formData.price}
                             onChange={handleInputChange}
+                            className={styles['modal-input']}
                             mb={3}
                         />
                         <Input
@@ -253,13 +250,14 @@ const ListProducts = () => {
                             type="number"
                             value={formData.categoria_id}
                             onChange={handleInputChange}
+                            className={styles['modal-input']}
                         />
                     </ModalBody>
                     <ModalFooter>
-                        <Button colorScheme="blue" mr={3} onClick={handleUpdate}>
+                        <Button className={`${styles['modal-button']} ${styles.update}`} mr={3} onClick={handleUpdate}>
                             Atualizar
                         </Button>
-                        <Button variant="ghost" onClick={() => setIsModalOpen(false)}>
+                        <Button className={`${styles['modal-button']} ${styles.cancel}`} variant="ghost" onClick={() => setIsModalOpen(false)}>
                             Cancelar
                         </Button>
                     </ModalFooter>

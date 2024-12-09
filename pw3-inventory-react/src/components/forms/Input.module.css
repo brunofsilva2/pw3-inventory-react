@@ -26,3 +26,17 @@
 .form_control input:focus {
     border-color: #007bff;
 }
+
+input[type="text"], input[type="number"] {
+    font-size: 1rem;
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:hover, input[type="number"]:hover {
+    border-color: #4CAF50;
+    background-color: #f1f9f3;
+}

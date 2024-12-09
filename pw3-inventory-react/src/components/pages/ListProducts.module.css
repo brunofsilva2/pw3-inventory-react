@@ -1,0 +1,184 @@
+/* Container principal */
+.box-container {
+    padding: 30px;
+    background-color: #f4f7fa;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+}
+
+.heading {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Loader centralizado */
+.spinner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+}
+
+/* Cartões de produtos */
+.product-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+    max-width: 250px;
+    margin: 0 auto;
+    transition: all 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+.product-card img {
+    border-radius: 8px;
+    margin-bottom: 15px;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.product-card h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.product-card .button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.product-card .button-group button {
+    width: 45%;
+    padding: 8px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border-radius: 8px;
+}
+
+.product-card .button-group button:nth-child(1) {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.product-card .button-group button:nth-child(1):hover {
+    background-color: #c0392b;
+}
+
+.product-card .button-group button:nth-child(2) {
+    background-color: #3498db;
+    color: white;
+}
+
+.product-card .button-group button:nth-child(2):hover {
+    background-color: #2980b9;
+}
+
+/* Modal */
+.modal-content {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.modal-input {
+    margin-bottom: 12px;
+    font-size: 1rem;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.modal-input:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 6px rgba(52, 152, 219, 0.3);
+}
+
+.modal-button {
+    font-size: 1rem;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    width: 48%;
+    margin-right: 4%;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.modal-button.update {
+    background-color: #3498db;
+    color: white;
+}
+
+.modal-button.update:hover {
+    background-color: #2980b9;
+}
+
+.modal-button.cancel {
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+.modal-button.cancel:hover {
+    background-color: #bdc3c7;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .product-card {
+        max-width: 100%;
+    }
+
+    .product-card .button-group button {
+        font-size: 0.75rem;
+        width: 48%;
+    }
+
+    .modal-content {
+        padding: 20px;
+    }
+
+    .modal-button {
+        width: 100%;
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .heading {
+        font-size: 1.5rem;
+    }
+
+    .product-card img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .product-card h3 {
+        font-size: 1rem;
+    }
+}

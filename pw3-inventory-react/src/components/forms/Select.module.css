@@ -26,3 +26,25 @@
 .form_control select:focus {
     border-color: #007bff;
 }
+
+input, select {
+    font-family: 'Roboto', sans-serif;
+}
+
+input::placeholder, select {
+    color: #888;
+}
+
+.react-select__control {
+    border-radius: 8px;
+    padding: 6px;
+    border: 1px solid #e0e0e0;
+    font-size: 1rem;
+    transition: border 0.3s ease-in-out;
+    background-color: #fff;
+}
+
+.react-select__control--is-focused {
+    border-color: #4CAF50;
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.3);
+}
